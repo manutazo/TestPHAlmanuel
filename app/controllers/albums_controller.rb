@@ -10,6 +10,9 @@ class AlbumsController < ApplicationController
   # GET /albums/1
   # GET /albums/1.json
   def show
+    if @album.public == false && current_user != @album.user
+      redirect_to root_path
+    end
   end
 
   # GET /albums/new
@@ -70,6 +73,6 @@ class AlbumsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def album_params
-      params.require(:album).permit(:name, :description, :user_id, {images: []})
+      params.require(:album).permit(:name, :description, :user_id, {images: []}, :public)
     end
 end
