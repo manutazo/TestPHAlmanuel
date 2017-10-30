@@ -15,5 +15,24 @@
   <%= @album.user %>
 </p>
 
+<p>
+  <strong>images:</strong>
+  <% @album.images.each do |image|%>
+    <%= image_tag(image.url) %>
+  <%end%>
+</p>
+
+
+<h1>Add more images</h1> 
+<%= form_for @album, url: album_images_path(@album), method: :post do |f| %>
+  <div class="field">
+    <%= f.file_field :images, multiple: true %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Add More Images" %>
+  </div>
+<% end %>
+
+
 <%= link_to 'Edit', edit_album_path(@album) %> |
 <%= link_to 'Back', albums_path %>
