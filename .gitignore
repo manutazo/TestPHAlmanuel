@@ -24,3 +24,6 @@
 
 public/uploads/tmp/*
 public/uploads/album/images/*
+
+# Ignore application configuration
+/config/application.yml

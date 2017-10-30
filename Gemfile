@@ -37,9 +37,14 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'devise', '~> 4.3.0'
 
-gem "carrierwave", :github => "carrierwaveuploader/carrierwave"
+gem "carrierwave", '~> 1.2.1'
 
-gem "fog-aws"
+gem "mini_magick", '~> 4.8.0'
+
+gem "fog",  '~> 1.42.0'
+
+gem "figaro"
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
