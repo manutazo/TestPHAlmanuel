@@ -16,7 +16,7 @@
 <p>
   <strong>images:</strong>
   <% @album.images.each do |image|%>
-    <%= image_tag(image.url) %>
+    <%= image_tag(image.medium.url) %>
   <%end%>
 </p>
 
