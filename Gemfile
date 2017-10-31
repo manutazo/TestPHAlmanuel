@@ -42,7 +42,8 @@ gem "fog",  '~> 1.42.0'
 gem "figaro"
 #Adds file validators to ActiveModel.
 gem 'file_validators'
-#bootstrap framework
+#jquery library
+gem 'jquery-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
