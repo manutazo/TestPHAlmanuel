@@ -27,3 +27,4 @@ public/uploads/album/images/*
 
 # Ignore application configuration
 /config/application.yml
+public/assets/*
