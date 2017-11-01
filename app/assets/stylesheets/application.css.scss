@@ -15,4 +15,12 @@
  */
 
  @import 'bootstrap.scss';
- @import "devise.scss";
+ @import "font-awesome";
+ @import 'scaffolds.scss';
+ @import 'users.scss';
+
+
+nav{
+  margin-bottom: 0px !important;
+
+}
