@@ -37,6 +37,7 @@ class AlbumsController < ApplicationController
     end
   end
 
+
   # PATCH/PUT /albums/1
   # PATCH/PUT /albums/1.json
   def update
