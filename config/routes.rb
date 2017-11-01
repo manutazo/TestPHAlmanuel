@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'users/profile' 
+  get '/users/:id', to: 'users#show', as: 'profile'
 
-  resources :albums, except: :index do
+    resources :albums, except: :index do
     resources :images, :only => [:create, :destroy] # support #create and #destroy
   end
 
