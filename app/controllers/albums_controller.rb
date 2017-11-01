@@ -6,9 +6,11 @@ class AlbumsController < ApplicationController
   # GET /albums/1
   # GET /albums/1.json
   def show
+    require 'will_paginate/array'
     if @album.public == false && current_user != @album.user
       redirect_to root_path
     end
+    @images = @album.images.paginate(page: params[:page], per_page: 20)
   end
 
   # GET /albums/new

@@ -1,36 +1,61 @@
-<p>
-  <strong>Name:</strong>
-  <%= @album.name %>
-</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @album.description %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @album.user %>
-</p>
-
-<p>
-  <strong>images:</strong>
-  <% @album.images.each do |image|%>
-    <%= image_tag(image.medium.url) %>
-  <%end%>
-</p>
-
-
-<h1>Add more images</h1>
-<%= form_for @album, url: album_images_path(@album), method: :post do |f| %>
-  <div class="field">
-    <%= f.file_field :images, multiple: true %>
+<div class="row">
+  <div class="container">
+    <div class="col-xs-12">
+  <h2><%= @album.name.truncate(10) %></h2>
   </div>
-  <div class="actions">
-    <%= f.submit "Add More Images" %>
+  <div class="col-xs-6">
+<h4>descripcion: <%= @album.description %></h4>
+</div>
+<%if @album.user_id = current_user.id %>
+<div class="col-xs-3">
+  <%=link_to("Eliminar este album",  album_path(@album.id), method: :delete, data: {confirm: "Estas seguro?"} )%>
+</div>
+<div class="col-xs-3">
+  <%=link_to("Editar este album",  edit_album_path(@album.id) )%>
+</div>
+<%end%>
+
   </div>
+</div>
+<div class="row">
+  <div class="container">
+      <div class="col-md-8 col-sm-5 col-xs-10 center-images">
+      <% @images.each do |image|%>
+        <%= image_tag(image.medium.url, :class => "image-medi") %>
+      <%end%>
+    </div>
+  </div>
+</div>
+
+  <%= will_paginate @images, renderer: BootstrapPagination::Rails  %>
+
+<div class="row">
+  <div class="col-xs-12 pagination">
+    <%if @album.user_id = current_user.id && @album.public == false%>
+    <%= social_share_button_tag(@album.name) %>
+    <%else%>
+    <h4>Haz este album publico para poder compartirlo. <%=link_to("Editar",  edit_album_path(@album.id) )%></h4>
+    <%end%>
+  </div>
+</div>
+
+<%if @album.user_id = current_user.id%>
+
+<div class="row">
+  <div class="col-xs-12  text-center">
+    <h4>Añade mas imagenes a tu album</h4>
+  </div>
+  <div class="col-xs-12 pagination" style="margin-bottom:5%">
+    <%= form_for @album, url: album_images_path(@album), method: :post do |f| %>
+      <div class="field">
+        <%= f.file_field :images, multiple: true%>
+      </div>
+      <div class="actions">
+        <%= f.submit "Añade mas imagenes", :class => "btn btn-primary" %>
+      </div>
+    </div>
+</div>
+<%end%>
+
 <% end %>
-
-
-<%= link_to 'Edit', edit_album_path(@album) %> |
-<%= link_to 'Back', albums_path %>

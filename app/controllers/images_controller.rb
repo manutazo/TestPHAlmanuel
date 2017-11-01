@@ -4,7 +4,7 @@ class ImagesController < ApplicationController
   def create
     add_more_images(images_params[:images])
     flash[:error] = "Failed uploading images" unless @album.save
-    redirect_to albums_path(@album)
+    redirect_to albums_path @album
   end
 
   private

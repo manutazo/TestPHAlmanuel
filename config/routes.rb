@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  get '/users/:id', to: 'users#show', as: 'profile'
 
     resources :albums, except: :index do
     resources :images, :only => [:create, :destroy] # support #create and #destroy
@@ -8,6 +7,8 @@ Rails.application.routes.draw do
 
 
   devise_for :users
+
+  get '/users/:id', to: 'users#show', as: 'profile'
 
   root to: "home#index"
 

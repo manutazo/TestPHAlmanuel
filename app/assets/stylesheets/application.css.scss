@@ -14,13 +14,25 @@
  *= require_self
  */
 
+ @import "social-share-button";
  @import 'bootstrap.scss';
  @import "font-awesome";
  @import 'scaffolds.scss';
  @import 'users.scss';
+ @import 'albums.scss';
 
 
 nav{
   margin-bottom: 0px !important;
 
+}
+
+$size: 35px;
+
+.social-share-button {
+  .ssb-icon {
+    background-size: $size $size;
+    height: $size;
+    width: $size;
+  }
 }
