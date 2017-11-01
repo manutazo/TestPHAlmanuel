@@ -15,3 +15,9 @@
 //= require jquery2
 //= require jquery_ujs
 //= require_tree .
+
+$('document').ready(function() {
+  setTimeout(function() {
+    $('#warning').slideUp();
+  }, 5000);
+});
