@@ -7,13 +7,15 @@
   <div class="col-xs-6">
 <h4>descripcion: <%= @album.description %></h4>
 </div>
-<%if @album.user_id = current_user.id %>
-<div class="col-xs-3">
-  <%=link_to("Eliminar este album",  album_path(@album.id), method: :delete, data: {confirm: "Estas seguro?"} )%>
-</div>
-<div class="col-xs-3">
-  <%=link_to("Editar este album",  edit_album_path(@album.id) )%>
-</div>
+<%if  user_signed_in? %>
+  <%if @album.user_id = current_user.id %>
+  <div class="col-xs-3">
+    <%=link_to("Eliminar este album",  album_path(@album.id), method: :delete, data: {confirm: "Estas seguro?"} )%>
+  </div>
+  <div class="col-xs-3">
+    <%=link_to("Editar este album",  edit_album_path(@album.id) )%>
+  </div>
+  <%end%>
 <%end%>
 
   </div>
@@ -29,6 +31,8 @@
 </div>
 
   <%= will_paginate @images, renderer: BootstrapPagination::Rails  %>
+
+  <%if  user_signed_in? %>
 
 <div class="row">
   <div class="col-xs-12 pagination">
@@ -57,5 +61,5 @@
     </div>
 </div>
 <%end%>
-
+<%end%>
 <% end %>
