@@ -22,7 +22,7 @@
 </div>
 <div class="row">
   <div class="container">
-      <div class="col-md-8 col-sm-13 col-xs-12 center-images">
+      <div class="col-md-6 col-sm-8 col-xs-12 center-images">
       <% @images.each do |image|%>
         <%= image_tag(image.medium.url, :class => "image-medi") %>
       <%end%>
@@ -39,7 +39,7 @@
     </div>
   </div>
   <%end%>
-
+a
   <%if  user_signed_in? %>
 
 <div class="row">
