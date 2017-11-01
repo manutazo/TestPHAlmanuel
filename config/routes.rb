@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :albums do
+  resources :albums, except: :index do
     resources :images, :only => [:create, :destroy] # support #create and #destroy
   end
 
