@@ -22,7 +22,7 @@
 </div>
 <div class="row">
   <div class="container">
-      <div class="col-md-8 col-sm-13 col-xs-6 center-images">
+      <div class="col-md-8 col-sm-13 col-xs-12 center-images">
       <% @images.each do |image|%>
         <%= image_tag(image.medium.url, :class => "image-medi") %>
       <%end%>
@@ -31,6 +31,14 @@
 </div>
 
   <%= will_paginate @images, renderer: BootstrapPagination::Rails  %>
+
+  <% unless user_signed_in? %>
+  <div class="row">
+    <div class="col-xs-12 pagination">
+      <%= social_share_button_tag(@album.name) %>
+    </div>
+  </div>
+  <%end%>
 
   <%if  user_signed_in? %>
 
