@@ -1,5 +1,6 @@
 class ImagesController < ApplicationController
   before_action :set_album
+  before_action :owner, only: [:add_more_images]
 
   def create
     add_more_images(images_params[:images])
@@ -22,5 +23,12 @@ class ImagesController < ApplicationController
   def images_params
     params.require(:album).permit({images: []})
   end
+
+  def owner
+  unless current_user == @album.user
+    flash[:alert] = "No tiene acceso"
+    redirect_to root_path
+  end
+end
 
 end
