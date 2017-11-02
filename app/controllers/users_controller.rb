@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   private
 
   def owner
-    unless current_user.id == params[:id]
+    unless current_user.id == params[:id].to_i
       flash[:alert] = "No tiene acceso"
       redirect_to root_path
     end
