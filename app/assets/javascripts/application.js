@@ -21,5 +21,8 @@
       e.preventDefault();
       $('#wrapper').toggleClass('toggled');
     });
+    $(".alert").delay(2000).slideUp(500, function(){
+          $(".alert").alert('close');
+      });
 
   });
