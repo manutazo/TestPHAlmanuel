@@ -11,7 +11,7 @@ class UsersController < ApplicationController
   private
 
   def owner
-    unless current_user == @album.user
+    unless current_user == params[:id]
       flash[:alert] = "No tiene acceso"
       redirect_to root_path
     end
