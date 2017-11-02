@@ -50,6 +50,7 @@ gem "font-awesome-rails"
 gem 'will_paginate-bootstrap'
 
 gem 'social-share-button'
+gem "rack-timeout"
 
 
 group :development, :test do
