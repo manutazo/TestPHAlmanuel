@@ -1,6 +1,7 @@
 class AlbumsController < ApplicationController
   before_action :set_album, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, only: [:edit, :update, :destroy, :new]
+  before_action :owner, only: [:edit, :update,:destroy]
 
 
   # GET /albums/1
@@ -69,6 +70,13 @@ class AlbumsController < ApplicationController
     def set_album
       @album = Album.find(params[:id])
     end
+
+    def owner
+    unless current_user == @album.user
+      flash[:alert] = "No tiene acceso"
+      redirect_to root_path
+    end
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def album_params
